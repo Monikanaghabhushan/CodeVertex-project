@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monika Nagabhushan - Online Resume</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.example.com/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        header, footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            z-index: 2;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #education {
+            background-image: url('https://www.example.com/education-background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .layered {
+            position: relative;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .layered::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: -1;
+            border-radius: inherit;
+        }
+        .custom-cursor {
+            cursor: url('https://www.example.com/custom-cursor.png'), auto;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            border-bottom: 1px dashed #0066cc;
+            transition: border-bottom-color 0.3s ease;
+        }
+        a:hover {
+            border-bottom-color: transparent;
+        }
+        .box-model {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monika Nagabhushan - Online Resume</h1>
+    </header>
+
+    <div class="container">
+        <section id="personal-info" class="custom-cursor">
+            <h2>Personal Information</h2>
+            <div class="box-model">
+                <p><strong>Name:</strong> Monika Nagabhushan</p>
+                <p><strong>Location:</strong> Bengaluru, India</p>
+                <p><strong>Email:</strong> monikacn15@gmail.com</p>
+                <p><strong>Phone:</strong> +91 8618466016</p>
+            </div>
+        </section>
+        
+        <section id="education" class="custom-cursor">
+            <h2>Education</h2>
+            <div class="layered">
+                <h3>Bachelor of Science in Electronics and Telecommunications</h3>
+                <p>M.S. Ramaiah Institute of Technology, Bengaluru, India</p>
+            </div>
+        </section>
+        
+        <section id="skills" class="custom-cursor">
+            <h2>Skills</h2>
+            <div class="box-model">
+                <p><strong>Programming Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Frameworks/Libraries:</strong> Bootstrap, React</p>
+                <p><strong>Tools:</strong> Git, VS Code</p>
+            </div>
+        </section>
+        
+        <section id="experience" class="custom-cursor">
+            <h2>Experience</h2>
+            <div class="layered">
+                <h3>Front-end Developer Intern</h3>
+                <p>Microsoft, 2023-2024</p>
+            </div>
+        </section>
+        
+        <section id="contact" class="custom-cursor">
+            <h2>Contact Information</h2>
+            <div class="box-model">
+                <p><strong>Email:</strong> monikacn15@gmail.com</p>
+                <p><strong>Phone:</strong> +91 8618466016</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/johndoe/" target="_blank">LinkedIn Profile</a></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Monika Nagabhushan - Online Resume. All rights reserved.</p>
+    </footer>
+</body>
+</html>
