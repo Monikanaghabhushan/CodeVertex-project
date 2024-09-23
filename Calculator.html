@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        .calculator {
+            background-color: black;
+            padding: 20px;
+            border-radius: 20px;
+            width: 320px;
+            height: 500px;
+        }
+
+        .display {
+            background-color: black;
+            color: white;
+            text-align: right;
+            padding: 20px;
+            font-size: 3em;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .operator {
+            background-color: orange;
+            color: white;
+        }
+
+        .number, .decimal {
+            background-color: #333;
+            color: white;
+        }
+
+        .clear {
+            background-color: #999;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="calculate('+/-')">+/-</button>
+            <button class="operator" onclick="calculate('%')">%</button>
+            <button class="operator" onclick="calculate('/')">÷</button>
+            <button class="number" onclick="updateDisplay('7')">7</button>
+            <button class="number" onclick="updateDisplay('8')">8</button>
+            <button class="number" onclick="updateDisplay('9')">9</button>
+            <button class="operator" onclick="calculate('*')">×</button>
+            <button class="number" onclick="updateDisplay('4')">4</button>
+            <button class="number" onclick="updateDisplay('5')">5</button>
+            <button class="number" onclick="updateDisplay('6')">6</button>
+            <button class="operator" onclick="calculate('-')">-</button>
+            <button class="number" onclick="updateDisplay('1')">1</button>
+            <button class="number" onclick="updateDisplay('2')">2</button>
+            <button class="number" onclick="updateDisplay('3')">3</button>
+            <button class="operator" onclick="calculate('+')">+</button>
+            <button class="number zero" onclick="updateDisplay('0')">0</button>
+            <button class="decimal" onclick="updateDisplay('.')">.</button>
+            <button class="operator" onclick="calculate('=')">=</button>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = '';
+        let previousInput = '';
+        let operator = '';
+
+        function updateDisplay(value) {
+            if (currentInput === '0' && value === '0') {
+                return;
+            }
+            if (currentInput.includes('.') && value === '.') {
+                return;
+            }
+            if (currentInput === '0') {
+                currentInput = value;
+            } else {
+                currentInput += value;
+            }
+            document.getElementById('display').textContent = currentInput;
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            previousInput = '';
+            operator = '';
+            document.getElementById('display').textContent = '0';
+        }
+
+        function calculate(op) {
+            if (op === '+/-') {
+                currentInput = (parseFloat(currentInput) * -1).toString();
+                document.getElementById('display').textContent = currentInput;
+                return;
+            }
+            if (op === '%') {
+                currentInput = (parseFloat(currentInput) / 100).toString();
+                document.getElementById('display').textContent = currentInput;
+                return;
+            }
+            if (op === '=') {
+                if (previousInput && currentInput) {
+                    currentInput = performCalculation().toString();
+                    document.getElementById('display').textContent = currentInput;
+                    previousInput = '';
+                    operator = '';
+                }
+                return;
+            }
+
+            if (currentInput) {
+                if (previousInput) {
+                    currentInput = performCalculation().toString();
+                    document.getElementById('display').textContent = currentInput;
+                }
+                previousInput = currentInput;
+                currentInput = '';
+                operator = op;
+            }
+        }
+
+        function performCalculation() {
+            let result = 0;
+            const prev = parseFloat(previousInput);
+            const current = parseFloat(currentInput);
+
+            switch (operator) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    result = prev / current;
+                    break;
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>

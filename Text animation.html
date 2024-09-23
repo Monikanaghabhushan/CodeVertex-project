@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Size Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text-container {
+            text-align: center;
+        }
+
+        .text {
+            color: red;
+            font-size: 20pt;
+            transition: font-size 0.1s ease-out, color 0.1s ease-out;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <h1 class="text" id="text">TEXT-GROWING</h1>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.getElementById('text');
+            let fontSize = 20;
+            let growing = true;
+
+            setInterval(function() {
+                if (growing) {
+                    fontSize += 5;
+                    textElement.style.fontSize = `${fontSize}px`;
+                    if (fontSize >= 50) {
+                        textElement.textContent = "TEXT-SHRINKING";
+                        textElement.classList.add('blue');
+                        growing = false;
+                    }
+                } else {
+                    fontSize -= 5;
+                    textElement.style.fontSize = `${fontSize}px`;
+                    if (fontSize <= 5) {
+                        fontSize = 5;
+                        growing = true;
+                        textElement.textContent = "TEXT-GROWING";
+                        textElement.classList.remove('blue');
+                    }
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
